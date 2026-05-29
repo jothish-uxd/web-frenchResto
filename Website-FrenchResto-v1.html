@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maison Colette — Nouvelle Carte</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ivory:        #F8F4EE;
+  --ivory-deep:   #EEE8DC;
+  --stone:        #D9D2C5;
+  --ash:          #A09A90;
+  --ink:          #2C2820;
+  --ink-soft:     #4A4238;
+  --sage:         #6B7C6A;
+  --sage-light:   #E8EDE6;
+  --gold:         #B89A5A;
+  --gold-light:   #F5EDD8;
+  --rouge:        #8C3A2E;
+  --rouge-light:  #F5EAE8;
+
+  --font-display: 'Cormorant Garamond', 'Georgia', serif;
+  --font-ui:      'Jost', 'Helvetica Neue', sans-serif;
+
+  --r-sm: 2px;
+  --r-md: 4px;
+  --ease: 220ms ease;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-ui);
+  background: var(--ivory);
+  color: var(--ink);
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+/* ── NAV ── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: 64px;
+  background: var(--ivory);
+  border-bottom: 1px solid var(--stone);
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 48px;
+}
+.nav-logo {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--ink);
+  text-decoration: none;
+}
+.nav-logo span {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--gold);
+}
+.nav-links {
+  display: flex; gap: 36px; list-style: none;
+}
+.nav-links a {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  text-decoration: none;
+  transition: color var(--ease);
+}
+.nav-links a:hover { color: var(--gold); }
+
+.nav-reserve {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ivory);
+  background: var(--ink);
+  border: none;
+  padding: 10px 22px;
+  border-radius: var(--r-sm);
+  cursor: pointer;
+  transition: background var(--ease);
+}
+.nav-reserve:hover { background: var(--gold); }
+.nav-reserve:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+/* ── HERO ── */
+.hero {
+  margin-top: 64px;
+  background: var(--ink);
+  color: var(--ivory);
+  padding: 120px 48px 100px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.hero-eyebrow {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 24px;
+  display: flex; align-items: center; gap: 12px;
+}
+.hero-eyebrow::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: var(--gold);
+}
+
+.hero-display {
+  font-family: var(--font-display);
+  font-size: 72px;
+  font-weight: 300;
+  line-height: 1.0;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+.hero-display em {
+  font-style: italic;
+  font-weight: 300;
+  color: var(--gold);
+}
+
+.hero-sub {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--ash);
+  margin-bottom: 28px;
+}
+
+.hero-desc {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--stone);
+  line-height: 1.8;
+  max-width: 400px;
+  margin-bottom: 40px;
+}
+
+.hero-cta-row {
+  display: flex; gap: 16px; align-items: center;
+}
+
+.btn-primary {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink);
+  background: var(--gold);
+  border: 1px solid var(--gold);
+  padding: 14px 32px;
+  border-radius: var(--r-sm);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: background var(--ease), color var(--ease);
+}
+.btn-primary:hover { background: #c9aa6a; border-color: #c9aa6a; text-decoration: none; }
+.btn-primary:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+.btn-ghost {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--stone);
+  background: transparent;
+  border: 1px solid rgba(217,210,197,0.35);
+  padding: 14px 28px;
+  border-radius: var(--r-sm);
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-block;
+  transition: border-color var(--ease), color var(--ease);
+}
+.btn-ghost:hover { border-color: var(--stone); color: var(--ivory); text-decoration: none; }
+
+/* Hero image area */
+.hero-visual {
+  background: var(--ink-soft);
+  border: 1px solid rgba(184,154,90,0.2);
+  border-radius: var(--r-md);
+  aspect-ratio: 4/5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 32px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-visual-plate {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -55%);
+  width: 160px;
+  height: 160px;
+}
+.hero-visual-tag {
+  width: 100%;
+  border-top: 1px solid rgba(184,154,90,0.3);
+  padding-top: 20px;
+  text-align: center;
+}
+.hero-visual-tag p {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-style: italic;
+  color: var(--ash);
+  letter-spacing: 0.04em;
+}
+.hero-visual-tag strong {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 400;
+  color: var(--gold);
+  display: block;
+  letter-spacing: 0.06em;
+}
+
+/* ── INTRODUCING SECTION ── */
+.intro-band {
+  background: var(--gold-light);
+  border-top: 1px solid var(--stone);
+  border-bottom: 1px solid var(--stone);
+  padding: 28px 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 48px;
+}
+.intro-band-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.intro-band-icon {
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--stone);
+  border-radius: 50%;
+  background: var(--ivory);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.intro-band-label {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.intro-band-sep {
+  width: 1px;
+  height: 28px;
+  background: var(--stone);
+}
+
+/* ── NOUVELLE CARTE ── */
+.section {
+  padding: 96px 48px;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 72px;
+}
+
+.eyebrow {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+.eyebrow::before, .eyebrow::after {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 1px;
+  background: var(--stone);
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: 52px;
+  font-weight: 300;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  color: var(--ink);
+  margin-bottom: 16px;
+}
+.section-title em { font-style: italic; color: var(--gold); }
+
+.section-desc {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--ash);
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* Menu items */
+.menu-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2px;
+  background: var(--stone);
+  border: 1px solid var(--stone);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  margin-bottom: 64px;
+}
+
+.menu-card {
+  background: var(--ivory);
+  padding: 40px 32px;
+  transition: background var(--ease);
+  cursor: default;
+}
+.menu-card:hover { background: var(--ivory-deep); }
+
+.menu-course {
+  font-family: var(--font-ui);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.menu-course::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--stone);
+}
+
+.menu-dish {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--ink);
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+.menu-dish-sub {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--ash);
+  margin-bottom: 16px;
+}
+.menu-desc {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--ink-soft);
+  line-height: 1.7;
+  margin-bottom: 24px;
+  min-height: 60px;
+}
+.menu-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.menu-price {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 400;
+  color: var(--ink);
+  letter-spacing: 0.02em;
+}
+.menu-tag {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 100px;
+}
+.menu-tag.new {
+  background: var(--gold);
+  color: var(--ink);
+}
+.menu-tag.seasonal {
+  background: var(--sage-light);
+  color: var(--sage);
+  border: 1px solid #c0cbbf;
+}
+.menu-tag.signature {
+  background: var(--rouge-light);
+  color: var(--rouge);
+  border: 1px solid #d9b0ab;
+}
+
+/* ── FEATURE ROW ── */
+.feature-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  background: var(--stone);
+  border: 1px solid var(--stone);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  margin-bottom: 64px;
+}
+
+.feature-image {
+  background: var(--ink);
+  aspect-ratio: 1/1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.feature-image-label {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-style: italic;
+  color: var(--ash);
+  text-align: center;
+}
+
+.feature-content {
+  background: var(--ivory);
+  padding: 64px 52px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.feature-number {
+  font-family: var(--font-display);
+  font-size: 100px;
+  font-weight: 300;
+  line-height: 1;
+  color: var(--ivory-deep);
+  margin-bottom: -20px;
+  letter-spacing: -0.03em;
+}
+.feature-title {
+  font-family: var(--font-display);
+  font-size: 38px;
+  font-weight: 300;
+  line-height: 1.2;
+  color: var(--ink);
+  margin-bottom: 16px;
+  letter-spacing: -0.01em;
+}
+.feature-title em { font-style: italic; color: var(--gold); }
+.feature-body {
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--ink-soft);
+  line-height: 1.8;
+  margin-bottom: 32px;
+}
+.feature-attr {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-style: italic;
+  color: var(--ash);
+  border-top: 1px solid var(--stone);
+  padding-top: 20px;
+}
+
+/* ── TASTING MENU STRIP ── */
+.tasting-strip {
+  background: var(--ink);
+  color: var(--ivory);
+  padding: 80px 48px;
+}
+.tasting-strip .section-title { color: var(--ivory); }
+.tasting-strip .section-desc { color: var(--ash); }
+.tasting-strip .eyebrow { color: var(--gold); }
+.tasting-strip .eyebrow::before,
+.tasting-strip .eyebrow::after { background: rgba(184,154,90,0.35); }
+
+.tasting-courses {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1px;
+  background: rgba(217,210,197,0.15);
+  border: 1px solid rgba(217,210,197,0.15);
+  border-radius: var(--r-md);
+  overflow: hidden;
+  margin-top: 56px;
+}
+.tasting-course {
+  background: rgba(44,40,32,0.7);
+  padding: 32px 24px;
+  border-top: 2px solid transparent;
+  transition: border-color var(--ease), background var(--ease);
+}
+.tasting-course:hover {
+  background: var(--ink-soft);
+  border-top-color: var(--gold);
+}
+.tasting-num {
+  font-family: var(--font-display);
+  font-size: 11px;
+  font-weight: 300;
+  letter-spacing: 0.16em;
+  color: var(--gold);
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+.tasting-name {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 400;
+  color: var(--ivory);
+  margin-bottom: 4px;
+  line-height: 1.2;
+}
+.tasting-sub {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--ash);
+  line-height: 1.4;
+}
+
+.tasting-price-row {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 48px;
+}
+.tasting-price {
+  font-family: var(--font-display);
+  font-size: 56px;
+  font-weight: 300;
+  color: var(--gold);
+  letter-spacing: -0.02em;
+}
+.tasting-price-note {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-style: italic;
+  color: var(--ash);
+}
+
+/* ── SOMMELIER PAIRING ── */
+.pairing-section {
+  background: var(--ivory-deep);
+  border-top: 1px solid var(--stone);
+  border-bottom: 1px solid var(--stone);
+  padding: 80px 48px;
+}
+
+.pairing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+  margin-top: 56px;
+}
+
+.wine-card {
+  background: var(--ivory);
+  border: 1px solid var(--stone);
+  border-radius: var(--r-md);
+  padding: 32px 28px;
+  border-top: 3px solid var(--gold);
+  transition: border-top-color var(--ease);
+}
+.wine-card:hover { border-top-color: var(--rouge); }
+
+.wine-region {
+  font-family: var(--font-ui);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ash);
+  margin-bottom: 10px;
+}
+.wine-name {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 400;
+  color: var(--ink);
+  margin-bottom: 4px;
+  letter-spacing: -0.01em;
+}
+.wine-vintage {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--ash);
+  margin-bottom: 16px;
+}
+.wine-notes {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--ink-soft);
+  line-height: 1.7;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--stone);
+}
+.wine-pairing {
+  font-size: 12px;
+  font-weight: 400;
+  letter-spacing: 0.06em;
+  color: var(--ash);
+}
+.wine-pairing strong {
+  font-weight: 500;
+  color: var(--gold);
+  font-family: var(--font-ui);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  display: block;
+  margin-bottom: 4px;
+}
+
+/* ── RESERVATION STRIP ── */
+.reservation {
+  padding: 100px 48px;
+  text-align: center;
+}
+
+.reservation .section-title {
+  font-size: 64px;
+  margin-bottom: 20px;
+}
+
+.reservation-meta {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--ash);
+  margin-bottom: 48px;
+}
+
+.reservation-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  max-width: 700px;
+  margin: 0 auto 32px;
+}
+
+.res-input {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--ink);
+  background: var(--ivory);
+  border: 1px solid var(--stone);
+  border-radius: var(--r-sm);
+  padding: 12px 18px;
+  transition: border-color var(--ease), box-shadow var(--ease);
+  appearance: none;
+  flex: 1;
+  min-width: 140px;
+}
+.res-input::placeholder { color: var(--ash); }
+.res-input:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 3px rgba(184,154,90,0.12); }
+
+.res-select {
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--ink);
+  background: var(--ivory);
+  border: 1px solid var(--stone);
+  border-radius: var(--r-sm);
+  padding: 12px 36px 12px 18px;
+  transition: border-color var(--ease);
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23A09A90' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  cursor: pointer;
+  flex: 1;
+  min-width: 140px;
+}
+.res-select:focus { outline: none; border-color: var(--gold); }
+
+.res-btn {
+  font-family: var(--font-ui);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ivory);
+  background: var(--ink);
+  border: 1px solid var(--ink);
+  padding: 13px 32px;
+  border-radius: var(--r-sm);
+  cursor: pointer;
+  transition: background var(--ease);
+  white-space: nowrap;
+}
+.res-btn:hover { background: var(--gold); border-color: var(--gold); color: var(--ink); }
+.res-btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+.reservation-note {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--ash);
+  letter-spacing: 0.04em;
+}
+
+/* ── FOOTER ── */
+footer {
+  background: var(--ink);
+  color: var(--ivory);
+  padding: 64px 48px 40px;
+  border-top: 1px solid rgba(217,210,197,0.1);
+}
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+.footer-brand {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 300;
+  letter-spacing: 0.06em;
+  color: var(--ivory);
+  margin-bottom: 12px;
+}
+.footer-brand em { font-style: italic; color: var(--gold); }
+.footer-tagline {
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--ash);
+  margin-bottom: 20px;
+}
+.footer-address {
+  font-size: 12px;
+  font-weight: 300;
+  color: var(--ash);
+  line-height: 1.8;
+}
+.footer-col-label {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 18px;
+}
+.footer-links { list-style: none; }
+.footer-links li { margin-bottom: 10px; }
+.footer-links a {
+  font-size: 13px;
+  font-weight: 300;
+  color: var(--ash);
+  text-decoration: none;
+  transition: color var(--ease);
+}
+.footer-links a:hover { color: var(--ivory); text-decoration: none; }
+.footer-base {
+  border-top: 1px solid rgba(217,210,197,0.1);
+  padding-top: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.footer-copy {
+  font-size: 11px;
+  font-weight: 300;
+  color: rgba(160,154,144,0.6);
+  letter-spacing: 0.06em;
+}
+
+/* Plate SVG wrapper */
+.plate-wrap { width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .hero { grid-template-columns: 1fr; padding: 64px 24px 56px; gap: 40px; }
+  .menu-grid { grid-template-columns: 1fr; }
+  .feature-row { grid-template-columns: 1fr; }
+  .tasting-courses { grid-template-columns: 1fr 1fr; }
+  .pairing-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+  .section { padding: 64px 24px; }
+  .nav { padding: 0 20px; }
+  .nav-links { display: none; }
+  .intro-band { flex-wrap: wrap; gap: 20px; padding: 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav" role="banner">
+  <a href="#" class="nav-logo" aria-label="Maison Colette home">MAISON <em>Colette</em></a>
+  <nav aria-label="Primary">
+    <ul class="nav-links">
+      <li><a href="#carte">La Carte</a></li>
+      <li><a href="#degustation">Dégustation</a></li>
+      <li><a href="#vins">Les Vins</a></li>
+      <li><a href="#histoire">Notre Histoire</a></li>
+    </ul>
+  </nav>
+  <button class="nav-reserve" onclick="document.getElementById('reservation').scrollIntoView({behavior:'smooth'})" aria-label="Make a reservation">Réserver</button>
+</header>
+
+<!-- HERO -->
+<section class="hero" aria-labelledby="hero-title">
+  <div>
+    <div class="hero-eyebrow" aria-label="Nouvelle Carte Printemps 2025">Nouvelle Carte · Printemps 2025</div>
+    <h1 class="hero-display" id="hero-title">La Saison<br><em>s'éveille</em></h1>
+    <p class="hero-sub">Une carte entièrement renouvelée</p>
+    <p class="hero-desc">Chef Aurélien Marchand presents a new menu born from the first harvests of spring — market produce, forgotten herbs, and the quiet luxury of simplicity done exceptionally well.</p>
+    <div class="hero-cta-row">
+      <a href="#carte" class="btn-primary">Discover the menu</a>
+      <a href="#degustation" class="btn-ghost">Tasting experience</a>
+    </div>
+  </div>
+  <div class="hero-visual" role="img" aria-label="Dish presentation placeholder">
+    <div class="plate-wrap">
+      <svg width="180" height="180" viewBox="0 0 180 180" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="90" cy="90" r="78" stroke="#4A4238" stroke-width="1"/>
+        <circle cx="90" cy="90" r="60" stroke="rgba(184,154,90,0.3)" stroke-width="0.5"/>
+        <circle cx="90" cy="90" r="42" stroke="#4A4238" stroke-width="0.5"/>
+        <ellipse cx="90" cy="90" rx="18" ry="6" fill="rgba(184,154,90,0.15)" stroke="rgba(184,154,90,0.4)" stroke-width="0.5"/>
+        <path d="M82 82 Q90 70 98 82 Q106 90 90 96 Q74 90 82 82Z" fill="rgba(107,124,106,0.25)" stroke="rgba(107,124,106,0.4)" stroke-width="0.5"/>
+        <circle cx="90" cy="84" r="3" fill="rgba(184,154,90,0.5)"/>
+        <path d="M72 104 Q80 108 90 106 Q100 108 108 104" stroke="rgba(160,154,144,0.4)" stroke-width="0.5" fill="none"/>
+        <text x="90" y="140" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="10" font-style="italic" fill="#6B6560" letter-spacing="2">assiette du chef</text>
+      </svg>
+    </div>
+    <div class="hero-visual-tag">
+      <p>Plat signature</p>
+      <strong>Turbot de ligne, beurre noisette</strong>
+    </div>
+  </div>
+</section>
+
+<!-- INTRO BAND -->
+<div class="intro-band" role="complementary" aria-label="Restaurant attributes">
+  <div class="intro-band-item">
+    <div class="intro-band-icon" aria-hidden="true">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2L9.5 6H14L10.5 8.5L12 12.5L8 10L4 12.5L5.5 8.5L2 6H6.5L8 2Z" stroke="#B89A5A" stroke-width="1" stroke-linejoin="round"/></svg>
+    </div>
+    <span class="intro-band-label">Étoile Michelin</span>
+  </div>
+  <div class="intro-band-sep" aria-hidden="true"></div>
+  <div class="intro-band-item">
+    <div class="intro-band-icon" aria-hidden="true">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 4h10M5 8h6M6 12h4" stroke="#B89A5A" stroke-width="1" stroke-linecap="round"/></svg>
+    </div>
+    <span class="intro-band-label">Carte de saison</span>
+  </div>
+  <div class="intro-band-sep" aria-hidden="true"></div>
+  <div class="intro-band-item">
+    <div class="intro-band-icon" aria-hidden="true">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="8" cy="8" r="5" stroke="#B89A5A" stroke-width="1"/><path d="M8 5v3l2 2" stroke="#B89A5A" stroke-width="1" stroke-linecap="round"/></svg>
+    </div>
+    <span class="intro-band-label">Service du soir</span>
+  </div>
+  <div class="intro-band-sep" aria-hidden="true"></div>
+  <div class="intro-band-item">
+    <div class="intro-band-icon" aria-hidden="true">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2C5.2 2 3 4.2 3 7c0 3.5 5 9 5 9s5-5.5 5-9c0-2.8-2.2-5-5-5Z" stroke="#B89A5A" stroke-width="1"/><circle cx="8" cy="7" r="1.5" stroke="#B89A5A" stroke-width="1"/></svg>
+    </div>
+    <span class="intro-band-label">8 Rue de Verneuil, Paris</span>
+  </div>
+  <div class="intro-band-sep" aria-hidden="true"></div>
+  <div class="intro-band-item">
+    <div class="intro-band-icon" aria-hidden="true">
+      <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M4 8 Q4 4 8 4 Q12 4 12 8 Q12 12 8 14 Q4 12 4 8Z" stroke="#B89A5A" stroke-width="1"/><path d="M8 6v2l1.5 1.5" stroke="#B89A5A" stroke-width="1" stroke-linecap="round"/></svg>
+    </div>
+    <span class="intro-band-label">Produits du marché</span>
+  </div>
+</div>
+
+<!-- NOUVELLE CARTE -->
+<section class="section" id="carte" aria-labelledby="carte-title">
+  <div class="section-header">
+    <div class="eyebrow">La Nouvelle Carte</div>
+    <h2 class="section-title" id="carte-title">Les Nouveaux <em>Plats</em></h2>
+    <p class="section-desc">Six new dishes arriving this spring — each one a conversation between the garden and the sea.</p>
+  </div>
+
+  <div class="menu-grid" role="list" aria-label="New menu items">
+
+    <article class="menu-card" role="listitem">
+      <div class="menu-course">Entrée</div>
+      <h3 class="menu-dish">Asperges blanches</h3>
+      <p class="menu-dish-sub">Hollandaise montée au beurre fumé</p>
+      <p class="menu-desc">White asparagus from the Loire, poached and served warm with a smoked butter hollandaise, topped with a soft-poached quail egg and chervil flowers.</p>
+      <div class="menu-footer">
+        <span class="menu-price">€26</span>
+        <span class="menu-tag seasonal">De saison</span>
+      </div>
+    </article>
+
+    <article class="menu-card" role="listitem">
+      <div class="menu-course">Entrée</div>
+      <h3 class="menu-dish">Tourteau breton</h3>
+      <p class="menu-dish-sub">Avocat, citron de Menton, wakamé</p>
+      <p class="menu-desc">Freshly dressed brown crab from Brittany, layered with Menton lemon cream, avocado, and a delicate wakamé oil, finished with compressed cucumber.</p>
+      <div class="menu-footer">
+        <span class="menu-price">€32</span>
+        <span class="menu-tag new">New</span>
+      </div>
+    </article>
+
+    <article class="menu-card" role="listitem">
+      <div class="menu-course">Poisson</div>
+      <h3 class="menu-dish">Turbot de ligne</h3>
+      <p class="menu-dish-sub">Beurre noisette, câpres, herbes sauvages</p>
+      <p class="menu-desc">Wild-caught turbot, pan-roasted and rested in brown butter with capers, wild sorrel, and a sauce vierge of early tomatoes and garden herbs.</p>
+      <div class="menu-footer">
+        <span class="menu-price">€58</span>
+        <span class="menu-tag signature">Signature</span>
+      </div>
+    </article>
+
+    <article class="menu-card" role="listitem">
+      <div class="menu-course">Viande</div>
+      <h3 class="menu-dish">Agneau de lait</h3>
+      <p class="menu-dish-sub">Jus court, petits pois à la française</p>
+      <p class="menu-desc">Milk-fed lamb slow-roasted over hay, served with a concentrated jus, braised Little Gems, baby peas, lardons, and a purée of spring onion.</p>
+      <div class="menu-footer">
+        <span class="menu-price">€52</span>
+        <span class="menu-tag new">New</span>
+      </div>
+    </article>
+
+    <article class="menu-card" role="listitem">
+      <div class="menu-course">Végétal</div>
+      <h3 class="menu-dish">Chou-fleur rôti</h3>
+      <p class="menu-dish-sub">Amandes, raisins de Corinthe, ras el hanout</p>
+      <p class="menu-desc">A whole roasted cauliflower heart, glazed with ras el hanout butter, with a salted almond cream, currants, and micro-herbs from our kitchen garden.</p>
+      <div class="menu-footer">
+        <span class="menu-price">€34</span>
+        <span class="menu-tag seasonal">De saison</span>
+      </div>
+    </article>
+
+    <article class="menu-card" role="listitem">
+      <div class="menu-course">Dessert</div>
+      <h3 class="menu-dish">Fraises gariguette</h3>
+      <p class="menu-dish-sub">Crème légère à la vanille de Tahiti</p>
+      <p class="menu-desc">Gariguette strawberries marinated in basil and aged balsamic, with a light Tahitian vanilla cream, sablé Breton crumble, and strawberry sorbet.</p>
+      <div class="menu-footer">
+        <span class="menu-price">€18</span>
+        <span class="menu-tag new">New</span>
+      </div>
+    </article>
+
+  </div>
+
+  <!-- Feature pair -->
+  <div class="feature-row">
+    <div class="feature-image" role="img" aria-label="Chef at work — image placeholder">
+      <svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <circle cx="100" cy="100" r="60" stroke="rgba(74,66,56,0.6)" stroke-width="1"/>
+        <path d="M70 80 Q80 60 100 58 Q120 60 130 80" stroke="rgba(184,154,90,0.3)" stroke-width="0.5" fill="none"/>
+        <rect x="84" y="90" width="32" height="3" rx="1.5" fill="rgba(160,154,144,0.3)"/>
+        <rect x="88" y="98" width="24" height="2" rx="1" fill="rgba(160,154,144,0.2)"/>
+        <rect x="92" y="104" width="16" height="2" rx="1" fill="rgba(160,154,144,0.15)"/>
+        <path d="M76 120 Q88 126 100 124 Q112 126 124 120" stroke="rgba(184,154,90,0.2)" stroke-width="0.5" fill="none"/>
+        <text x="100" y="154" text-anchor="middle" font-family="Cormorant Garamond, Georgia, serif" font-size="11" font-style="italic" fill="rgba(160,154,144,0.5)" letter-spacing="2">le chef</text>
+      </svg>
+    </div>
+    <div class="feature-content">
+      <div class="feature-number" aria-hidden="true">15</div>
+      <h3 class="feature-title">Années de passion<br>pour le <em>produit juste</em></h3>
+      <p class="feature-body">Chef Aurélien Marchand trained under three Michelin-starred kitchens before opening Maison Colette in 2009. His philosophy is unchanged: buy from farmers he knows, cook what is perfect today, and let simplicity be the boldest statement on the plate.</p>
+      <div class="feature-attr">"Un bon repas est une chose simple, rendue extraordinaire par l'attention portée à chaque détail."</div>
+    </div>
+  </div>
+</section>
+
+<!-- TASTING MENU -->
+<section class="tasting-strip" id="degustation" aria-labelledby="degustation-title">
+  <div class="section-header">
+    <div class="eyebrow">Menu Dégustation</div>
+    <h2 class="section-title" id="degustation-title">Le Grand <em>Parcours</em></h2>
+    <p class="section-desc">Seven courses, one story — a journey through the spring table of Maison Colette.</p>
+  </div>
+  <div class="tasting-courses" role="list" aria-label="Tasting menu courses">
+    <div class="tasting-course" role="listitem">
+      <div class="tasting-num">I</div>
+      <div class="tasting-name">Amuse-bouche</div>
+      <div class="tasting-sub">Du moment</div>
+    </div>
+    <div class="tasting-course" role="listitem">
+      <div class="tasting-num">II</div>
+      <div class="tasting-name">Tourteau breton</div>
+      <div class="tasting-sub">Avocat, citron, wakamé</div>
+    </div>
+    <div class="tasting-course" role="listitem">
+      <div class="tasting-num">III</div>
+      <div class="tasting-name">Asperges, œuf mollet</div>
+      <div class="tasting-sub">Hollandaise fumée</div>
+    </div>
+    <div class="tasting-course" role="listitem">
+      <div class="tasting-num">IV</div>
+      <div class="tasting-name">Turbot de ligne</div>
+      <div class="tasting-sub">Beurre noisette</div>
+    </div>
+    <div class="tasting-course" role="listitem">
+      <div class="tasting-num">V</div>
+      <div class="tasting-name">Agneau de lait</div>
+      <div class="tasting-sub">Petits pois, jus court</div>
+    </div>
+    <div class="tasting-course" role="listitem">
+      <div class="tasting-num">VI</div>
+      <div class="tasting-name">Plateau de fromages</div>
+      <div class="tasting-sub">Affineur Dubois, Paris</div>
+    </div>
+    <div class="tasting-course" role="listitem">
+      <div class="tasting-num">VII</div>
+      <div class="tasting-name">Fraises gariguette</div>
+      <div class="tasting-sub">Vanille, sablé breton</div>
+    </div>
+    <div class="tasting-course" role="listitem">
+      <div class="tasting-num">—</div>
+      <div class="tasting-name">Mignardises</div>
+      <div class="tasting-sub">Café ou infusion</div>
+    </div>
+    <div class="tasting-course" role="listitem">
+      <div class="tasting-num">+</div>
+      <div class="tasting-name">Accord Mets & Vins</div>
+      <div class="tasting-sub">Sélection du sommelier</div>
+    </div>
+    <div class="tasting-course" role="listitem" style="border-top-color:var(--gold);background:rgba(184,154,90,0.08);">
+      <div class="tasting-num" style="color:var(--gold);">★</div>
+      <div class="tasting-name" style="color:var(--gold);">Truffe noire</div>
+      <div class="tasting-sub">Supplément optionnel</div>
+    </div>
+  </div>
+  <div class="tasting-price-row">
+    <span class="tasting-price" aria-label="125 euros">€125</span>
+    <span class="tasting-price-note">par personne · accord vins +€65</span>
+  </div>
+</section>
+
+<!-- WINE PAIRINGS -->
+<section class="pairing-section" id="vins" aria-labelledby="vins-title">
+  <div class="section-header">
+    <div class="eyebrow">La Cave</div>
+    <h2 class="section-title" id="vins-title">Accords du <em>Sommelier</em></h2>
+    <p class="section-desc">Three selections chosen by our sommelier Léa Fontaine to accompany the new spring menu.</p>
+  </div>
+  <div class="pairing-grid" role="list" aria-label="Sommelier wine selections">
+
+    <div class="wine-card" role="listitem">
+      <div class="wine-region">Bourgogne Blanc</div>
+      <h3 class="wine-name">Meursault 1er Cru</h3>
+      <p class="wine-vintage">Domaine Leflaive · 2021</p>
+      <p class="wine-notes">Pale gold with a fine bead. Notes of toasted almond, white peach, and warm brioche. A long minerally finish with the salinity of Puligny soil.</p>
+      <div class="wine-pairing">
+        <strong>Pairing</strong>
+        Turbot de ligne · Asperges blanches
+      </div>
+    </div>
+
+    <div class="wine-card" role="listitem">
+      <div class="wine-region">Loire · Sancerre</div>
+      <h3 class="wine-name">Sancerre Blanc</h3>
+      <p class="wine-vintage">Henri Bourgeois · 2022</p>
+      <p class="wine-notes">Bright and precise, with gooseberry, cut grass, and flint. The freshness cuts beautifully through the richness of the crab and the citrus in the amuse.</p>
+      <div class="wine-pairing">
+        <strong>Pairing</strong>
+        Tourteau breton · Amuse-bouche
+      </div>
+    </div>
+
+    <div class="wine-card" role="listitem">
+      <div class="wine-region">Bourgogne Rouge</div>
+      <h3 class="wine-name">Gevrey-Chambertin</h3>
+      <p class="wine-vintage">Rossignol-Trapet · 2019</p>
+      <p class="wine-notes">Deep ruby with garnet hues. Wild cherry, iron, and dried herbs. The tannins are silky yet firm — built to carry the delicate fat of milk-fed lamb.</p>
+      <div class="wine-pairing">
+        <strong>Pairing</strong>
+        Agneau de lait · Plateau de fromages
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- RESERVATION -->
+<section class="reservation" id="reservation" aria-labelledby="res-title">
+  <div class="eyebrow">Réservation</div>
+  <h2 class="section-title" id="res-title">Rejoignez-<em>nous</em></h2>
+  <p class="reservation-meta">The spring menu is available Tuesday to Saturday, dinner service from 7:30pm.</p>
+  <div class="reservation-form" role="form" aria-label="Reservation request form">
+    <input class="res-input" type="text" placeholder="Your name" aria-label="Full name" autocomplete="name">
+    <input class="res-input" type="date" aria-label="Date" min="2025-04-01">
+    <select class="res-select" aria-label="Number of guests">
+      <option value="">Guests</option>
+      <option>1</option>
+      <option>2</option>
+      <option>3 – 4</option>
+      <option>5 – 6</option>
+      <option>7+</option>
+    </select>
+    <select class="res-select" aria-label="Seating time">
+      <option value="">Time</option>
+      <option>7:30 pm</option>
+      <option>8:00 pm</option>
+      <option>8:30 pm</option>
+      <option>9:00 pm</option>
+    </select>
+    <button class="res-btn" id="res-submit">Request table</button>
+  </div>
+  <p class="reservation-note">Or call us directly: +33 1 42 22 01 84 · For groups of 7+ please enquire by email.</p>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div>
+      <div class="footer-brand">MAISON <em>Colette</em></div>
+      <p class="footer-tagline">Cuisine de saison, esprit du lieu</p>
+      <address class="footer-address" style="font-style:normal;">
+        8 Rue de Verneuil<br>
+        75007 Paris, France<br><br>
+        +33 1 42 22 01 84<br>
+        contact@maisoncolette.fr
+      </address>
+    </div>
+    <div>
+      <div class="footer-col-label">La Carte</div>
+      <ul class="footer-links">
+        <li><a href="#carte">Entrées</a></li>
+        <li><a href="#carte">Poissons</a></li>
+        <li><a href="#carte">Viandes</a></li>
+        <li><a href="#carte">Desserts</a></li>
+        <li><a href="#degustation">Dégustation</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-label">La Cave</div>
+      <ul class="footer-links">
+        <li><a href="#vins">Vins blancs</a></li>
+        <li><a href="#vins">Vins rouges</a></li>
+        <li><a href="#vins">Champagnes</a></li>
+        <li><a href="#vins">Accords mets</a></li>
+      </ul>
+    </div>
+    <div>
+      <div class="footer-col-label">Le Restaurant</div>
+      <ul class="footer-links">
+        <li><a href="#">Notre histoire</a></li>
+        <li><a href="#">Le chef</a></li>
+        <li><a href="#">Presse</a></li>
+        <li><a href="#reservation">Réservation</a></li>
+        <li><a href="#">Événements privés</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-base">
+    <span class="footer-copy">© 2025 Maison Colette — Tous droits réservés</span>
+    <span class="footer-copy">Mardi – Samedi · 19h30 – 23h00</span>
+  </div>
+</footer>
+
+<script>
+document.getElementById('res-submit').addEventListener('click', function() {
+  const name = document.querySelector('.res-input').value.trim();
+  const btn = this;
+  btn.textContent = name ? `Merci, ${name.split(' ')[0]}` : 'Request sent';
+  btn.style.background = '#6B7C6A';
+  btn.style.borderColor = '#6B7C6A';
+  btn.style.color = '#F8F4EE';
+  btn.disabled = true;
+  setTimeout(() => {
+    btn.textContent = 'Request table';
+    btn.style.background = '';
+    btn.style.borderColor = '';
+    btn.style.color = '';
+    btn.disabled = false;
+  }, 3500);
+});
+
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', e => {
+    const target = document.querySelector(a.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth' });
+    }
+  });
+});
+</script>
+</body>
+</html>
